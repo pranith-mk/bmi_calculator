@@ -8,6 +8,21 @@ class Bmi extends StatefulWidget {
 }
 
 class _BmiState extends State<Bmi> {
+  final heightController = TextEditingController();
+  final weightController = TextEditingController();
+  double bmi = 0;
+  String result = "";
+
+  void bmiCalculate() {
+    double height = double.parse(heightController.text)/100;
+    double weight = double.parse(weightController.text);
+    bmi = weight / (height * height);
+
+    setState(() {
+      result = "Your BMI is ${bmi.toStringAsFixed(2)}";
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,6 +56,7 @@ class _BmiState extends State<Bmi> {
                   child: Column(
                     children: [
                       TextField(
+                        controller: heightController,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(15),
@@ -54,6 +70,7 @@ class _BmiState extends State<Bmi> {
                       ),
                       SizedBox(height: 20),
                       TextField(
+                        controller: weightController,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(15),
@@ -76,13 +93,21 @@ class _BmiState extends State<Bmi> {
                           ),
                         ),
                         child: TextButton(
-                          onPressed: (){},
+                          onPressed: () {
+                            bmiCalculate();
+                          },
                           child: Text(
                             "Calculate",
-                            style: TextStyle(color: Colors.blue[900],fontSize: 20),
-
+                            style: TextStyle(
+                              color: Colors.blue[900],
+                              fontSize: 20,
+                            ),
                           ),
                         ),
+                      ),
+                      Text(
+                        "Your BMI is $result",
+                        style: TextStyle(fontSize: 20),
                       ),
                     ],
                   ),
@@ -95,4 +120,3 @@ class _BmiState extends State<Bmi> {
     );
   }
 }
-

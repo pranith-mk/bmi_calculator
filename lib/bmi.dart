@@ -39,12 +39,14 @@ class _BmiState extends State<Bmi> {
 
         child: Column(
           children: [
+            SizedBox(height: 50,),
             Text(
               "BMI Calculator",
-              style: TextStyle(color: Colors.white, fontSize: 40),
+              style: TextStyle(color: Colors.white, fontSize: 40,fontWeight: FontWeight.bold, ),
             ),
+            SizedBox(height: 50,),
             SizedBox(
-              width: 400,
+              width: 300,
               height: 400,
               child: Card(
                 shape: RoundedRectangleBorder(
@@ -55,6 +57,7 @@ class _BmiState extends State<Bmi> {
                   padding: const EdgeInsets.all(20.0),
                   child: Column(
                     children: [
+                      SizedBox(height: 20,),
                       TextField(
                         controller: heightController,
                         decoration: InputDecoration(
@@ -99,14 +102,16 @@ class _BmiState extends State<Bmi> {
                           child: Text(
                             "Calculate",
                             style: TextStyle(
-                              color: Colors.blue[900],
+                              color: Colors.indigo,
                               fontSize: 20,
+                              fontWeight: FontWeight.bold
                             ),
                           ),
                         ),
                       ),
+                      SizedBox(height: 20,),
                       Text(
-                        "Your BMI is $result",
+                        "$result",
                         style: TextStyle(fontSize: 20),
                       ),
                     ],
